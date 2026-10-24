@@ -1,0 +1,190 @@
+/* ==========================================================================
+   PawPilot 设计令牌（Design Tokens）
+   宠物洗护门店智能预约与档案助手 · 温暖治愈系 B 端设计系统
+   所有页面与组件只允许引用此处令牌，禁止硬编码色值 / 圆角 / 阴影 / 间距
+   ========================================================================== */
+
+:root {
+  /* ---------- 1. 基础色板 ---------- */
+  --pp-bg-page: #fbf8f3;        /* 暖白背景 */
+  --pp-bg-cream: #f5f0e8;       /* 奶油米色（表头 / 次级底） */
+  --pp-bg-card: #ffffff;        /* 卡片 */
+  --pp-bg-sunken: #f9f5ef;      /* 下沉区域 */
+  --pp-bg-hover: #f7f2ea;
+
+  --pp-border: #ede6db;         /* 主边框 */
+  --pp-border-light: #f5efe6;   /* 浅边框 */
+  --pp-border-strong: #e2d8c9;
+
+  /* ---------- 2. 文字层级 ---------- */
+  --pp-text-primary: #3d3a35;   /* 暖黑：标题 / 关键数据 */
+  --pp-text-regular: #6b6560;   /* 常规正文 */
+  --pp-text-secondary: #9c948b; /* 次要说明 */
+  --pp-text-placeholder: #c4bbb0;
+  --pp-text-disabled: #d6cfc4;
+  --pp-text-inverse: #ffffff;
+
+  /* ---------- 3. 主色：柔和蓝 ---------- */
+  --pp-primary: #5b9bd5;
+  --pp-primary-light: #8fbde8;
+  --pp-primary-lighter: #e8f2fb;
+  --pp-primary-dark: #3f7fb8;
+  --pp-primary-ring: rgba(91, 155, 213, 0.18);
+
+  /* ---------- 4. 语义色 ---------- */
+  --pp-success: #7fb77e;        /* 抹茶绿 */
+  --pp-success-bg: #eaf6e9;
+  --pp-warning: #f2a65a;        /* 蜜桃橙 */
+  --pp-warning-bg: #fff3e6;
+  --pp-danger: #e07a5f;         /* 珊瑚红 */
+  --pp-danger-bg: #fdede8;
+  --pp-ai: #9b8ac4;             /* 薰衣草紫：AI 相关 */
+  --pp-ai-bg: #f1edfa;
+  --pp-info: #8fb8d8;           /* 柔和蓝：中性信息 */
+  --pp-info-bg: #edf5fb;
+  --pp-neutral: #a89f94;        /* 暖灰 */
+  --pp-neutral-bg: #f2ede5;
+
+  /* ---------- 5. 圆角 ---------- */
+  --pp-radius-xs: 6px;
+  --pp-radius-sm: 10px;
+  --pp-radius-md: 14px;
+  --pp-radius-lg: 20px;
+  --pp-radius-xl: 28px;
+  --pp-radius-pill: 999px;
+
+  /* ---------- 6. 阴影（多层柔和，禁止硬阴影） ---------- */
+  --pp-shadow-xs: 0 1px 3px rgba(61, 58, 53, 0.04);
+  --pp-shadow-sm: 0 2px 8px rgba(61, 58, 53, 0.06);
+  --pp-shadow-md: 0 6px 20px rgba(61, 58, 53, 0.08);
+  --pp-shadow-lg: 0 12px 32px rgba(61, 58, 53, 0.1);
+  --pp-shadow-primary: 0 8px 24px rgba(91, 155, 213, 0.12);
+  --pp-shadow-inset: inset 0 1px 2px rgba(61, 58, 53, 0.03);
+
+  /* ---------- 7. 排版 ---------- */
+  --pp-font-cn: 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Hiragino Sans GB', sans-serif;
+  --pp-font-en: 'Nunito', 'Quicksand', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+  --pp-font-family: var(--pp-font-cn);
+  --pp-font-num: var(--pp-font-en);
+
+  --pp-fs-xs: 12px;
+  --pp-fs-sm: 13px;
+  --pp-fs-base: 14px;
+  --pp-fs-md: 16px;
+  --pp-fs-lg: 18px;
+  --pp-fs-xl: 22px;
+  --pp-fs-2xl: 28px;
+
+  --pp-fw-normal: 400;
+  --pp-fw-medium: 500;
+  --pp-fw-semibold: 600;
+  --pp-fw-bold: 700;
+
+  --pp-lh: 1.6;
+  --pp-lh-tight: 1.35;
+
+  /* ---------- 8. 间距（4 的倍数） ---------- */
+  --pp-space-1: 4px;
+  --pp-space-2: 8px;
+  --pp-space-3: 12px;
+  --pp-space-4: 16px;
+  --pp-space-5: 24px;
+  --pp-space-6: 32px;
+  --pp-space-7: 48px;
+
+  /* ---------- 9. 动效 ---------- */
+  --pp-ease: cubic-bezier(0.25, 0.8, 0.25, 1);
+  --pp-ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --pp-dur-fast: 150ms;
+  --pp-dur: 250ms;
+  --pp-dur-slow: 400ms;
+
+  /* ---------- 10. 布局尺寸 ---------- */
+  --pp-sidebar-w: 232px;
+  --pp-sidebar-collapsed-w: 76px;
+  --pp-header-h: 68px;
+  --pp-content-max: 1560px;
+
+  /* ---------- 11. 遮罩 ---------- */
+  --pp-mask: rgba(61, 58, 53, 0.25);
+
+  /* ==========================================================================
+     12. Element Plus 主题映射 —— 统一圆角 / 颜色 / 字体
+     ========================================================================== */
+  --el-color-primary: var(--pp-primary);
+  --el-color-primary-light-3: var(--pp-primary-light);
+  --el-color-primary-light-5: #a9cdee;
+  --el-color-primary-light-7: #c8e0f5;
+  --el-color-primary-light-8: #dbeafa;
+  --el-color-primary-light-9: var(--pp-primary-lighter);
+  --el-color-primary-dark-2: var(--pp-primary-dark);
+
+  --el-color-success: var(--pp-success);
+  --el-color-success-light-9: var(--pp-success-bg);
+  --el-color-warning: var(--pp-warning);
+  --el-color-warning-light-9: var(--pp-warning-bg);
+  --el-color-danger: var(--pp-danger);
+  --el-color-danger-light-9: var(--pp-danger-bg);
+  --el-color-error: var(--pp-danger);
+  --el-color-error-light-9: var(--pp-danger-bg);
+  --el-color-info: var(--pp-info);
+  --el-color-info-light-9: var(--pp-info-bg);
+
+  --el-text-color-primary: var(--pp-text-primary);
+  --el-text-color-regular: var(--pp-text-regular);
+  --el-text-color-secondary: var(--pp-text-secondary);
+  --el-text-color-placeholder: var(--pp-text-placeholder);
+  --el-text-color-disabled: var(--pp-text-disabled);
+
+  --el-border-color: var(--pp-border);
+  --el-border-color-light: var(--pp-border-light);
+  --el-border-color-lighter: var(--pp-border-light);
+  --el-border-color-extra-light: #faf6f0;
+  --el-fill-color-blank: var(--pp-bg-card);
+  --el-fill-color-light: var(--pp-bg-cream);
+  --el-fill-color-lighter: var(--pp-bg-sunken);
+  --el-bg-color: var(--pp-bg-card);
+  --el-bg-color-page: var(--pp-bg-page);
+  --el-bg-color-overlay: var(--pp-bg-card);
+
+  --el-border-radius-base: var(--pp-radius-sm);
+  --el-border-radius-small: var(--pp-radius-xs);
+  --el-border-radius-round: var(--pp-radius-pill);
+
+  --el-font-family: var(--pp-font-family);
+  --el-font-size-base: var(--pp-fs-base);
+  --el-font-size-small: var(--pp-fs-sm);
+  --el-font-size-extra-small: var(--pp-fs-xs);
+  --el-font-size-medium: var(--pp-fs-md);
+  --el-font-size-large: var(--pp-fs-lg);
+
+  --el-box-shadow: var(--pp-shadow-md);
+  --el-box-shadow-light: var(--pp-shadow-sm);
+  --el-box-shadow-lighter: var(--pp-shadow-xs);
+  --el-box-shadow-dark: var(--pp-shadow-lg);
+
+  --el-mask-color: var(--pp-mask);
+  --el-mask-color-extra-light: rgba(61, 58, 53, 0.12);
+
+  --el-transition-duration: var(--pp-dur);
+  --el-transition-duration-fast: var(--pp-dur-fast);
+
+  --el-component-size: 38px;
+  --el-component-size-large: 44px;
+  --el-component-size-small: 32px;
+}
+
+/* ---------- 响应式断点（桌面优先） ---------- */
+@media (max-width: 1366px) {
+  :root {
+    --pp-sidebar-w: 208px;
+    --pp-space-5: 20px;
+  }
+}
+@media (max-width: 1024px) {
+  :root {
+    --pp-sidebar-w: 0px;
+    --pp-space-5: 16px;
+    --pp-space-6: 24px;
+  }
+}

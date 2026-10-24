@@ -1,0 +1,513 @@
+/* ==========================================================================
+   Element Plus 组件主题覆盖
+   目标：柔和圆角 + 暖色边框 + 多层柔和阴影，禁止直角、硬阴影、高饱和
+   ========================================================================== */
+
+/* ---------------- 按钮：胶囊大圆角 + 轻微上浮 ---------------- */
+.el-button {
+  border-radius: var(--pp-radius-pill);
+  font-weight: var(--pp-fw-medium);
+  padding: 0 20px;
+  transition: transform var(--pp-dur-fast) var(--pp-ease),
+    box-shadow var(--pp-dur-fast) var(--pp-ease),
+    background-color var(--pp-dur-fast) var(--pp-ease),
+    border-color var(--pp-dur-fast) var(--pp-ease);
+}
+
+.el-button:not(.is-disabled):hover {
+  transform: translateY(-1px);
+}
+
+.el-button--primary {
+  box-shadow: 0 4px 14px rgba(91, 155, 213, 0.24);
+}
+
+.el-button--primary:not(.is-disabled):hover {
+  box-shadow: var(--pp-shadow-primary);
+}
+
+.el-button--success {
+  box-shadow: 0 4px 14px rgba(127, 183, 126, 0.22);
+}
+
+.el-button--danger {
+  box-shadow: 0 4px 14px rgba(224, 122, 95, 0.22);
+}
+
+.el-button--warning {
+  box-shadow: 0 4px 14px rgba(242, 166, 90, 0.22);
+}
+
+.el-button.is-link,
+.el-button.is-text {
+  box-shadow: none;
+  padding: 0 6px;
+}
+
+.el-button.is-link:not(.is-disabled):hover,
+.el-button.is-text:not(.is-disabled):hover {
+  transform: none;
+  background: transparent;
+}
+
+.el-button.is-round {
+  border-radius: var(--pp-radius-pill);
+}
+
+.el-button-group > .el-button:first-child {
+  border-radius: var(--pp-radius-pill) 0 0 var(--pp-radius-pill);
+}
+.el-button-group > .el-button:last-child {
+  border-radius: 0 var(--pp-radius-pill) var(--pp-radius-pill) 0;
+}
+
+/* ---------------- 输入框 / 选择器：暖色边框 + 聚焦外发光 ---------------- */
+.el-input__wrapper,
+.el-textarea__inner,
+.el-select__wrapper {
+  border-radius: var(--pp-radius-sm);
+  background-color: var(--pp-bg-card);
+  box-shadow: 0 0 0 1px var(--pp-border) inset;
+  transition: box-shadow var(--pp-dur) var(--pp-ease);
+}
+
+.el-input__wrapper:hover,
+.el-textarea__inner:hover,
+.el-select__wrapper:hover {
+  box-shadow: 0 0 0 1px var(--pp-primary-light) inset;
+}
+
+.el-input__wrapper.is-focus,
+.el-input.is-focus .el-input__wrapper,
+.el-textarea__inner:focus,
+.el-select__wrapper.is-focused {
+  box-shadow: 0 0 0 1px var(--pp-primary) inset, 0 0 0 4px var(--pp-primary-ring) !important;
+}
+
+.el-textarea__inner {
+  border-radius: var(--pp-radius-sm);
+  padding: 10px 14px;
+}
+
+.el-input-number.is-controls-right .el-input__wrapper {
+  border-radius: var(--pp-radius-sm);
+}
+
+.el-input-group__append,
+.el-input-group__prepend {
+  border-radius: 0 var(--pp-radius-sm) var(--pp-radius-sm) 0;
+  background: var(--pp-bg-cream);
+  border-color: var(--pp-border);
+  color: var(--pp-text-regular);
+}
+
+/* ---------------- 卡片 ---------------- */
+.el-card {
+  border-radius: var(--pp-radius-lg);
+  border: 1px solid var(--pp-border-light);
+  box-shadow: var(--pp-shadow-sm);
+  transition: transform var(--pp-dur) var(--pp-ease), box-shadow var(--pp-dur) var(--pp-ease);
+}
+
+.el-card.is-hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--pp-shadow-md);
+}
+
+.el-card__header {
+  border-bottom: 1px solid var(--pp-border-light);
+  padding: var(--pp-space-4) var(--pp-space-5);
+}
+
+/* ---------------- 表格：奶油表头 · 56px 行高 · 浅蓝 hover ---------------- */
+.el-table {
+  --el-table-border-color: var(--pp-border-light);
+  --el-table-header-bg-color: var(--pp-bg-cream);
+  --el-table-header-text-color: var(--pp-text-regular);
+  --el-table-text-color: var(--pp-text-regular);
+  --el-table-row-hover-bg-color: var(--pp-primary-lighter);
+  border-radius: var(--pp-radius-md);
+  overflow: hidden;
+  font-size: var(--pp-fs-base);
+}
+
+.el-table th.el-table__cell {
+  background-color: var(--pp-bg-cream);
+  font-weight: var(--pp-fw-semibold);
+  color: var(--pp-text-primary);
+  height: 52px;
+}
+
+.el-table td.el-table__cell {
+  height: 56px;
+  border-bottom: 1px solid var(--pp-border-light);
+}
+
+.el-table tbody tr {
+  transition: background-color var(--pp-dur-fast) var(--pp-ease);
+}
+
+.el-table--enable-row-hover .el-table__body tr:hover > td.el-table__cell {
+  background-color: var(--pp-primary-lighter);
+}
+
+.el-table::before,
+.el-table__inner-wrapper::before {
+  display: none;
+}
+
+/* ---------------- 分页器 ---------------- */
+.el-pagination {
+  --el-pagination-button-bg-color: var(--pp-bg-cream);
+  --el-pagination-hover-color: var(--pp-primary);
+  font-family: var(--pp-font-num);
+  gap: 4px;
+}
+
+.el-pagination.is-background .el-pager li,
+.el-pagination.is-background .btn-prev,
+.el-pagination.is-background .btn-next {
+  border-radius: var(--pp-radius-sm);
+  background-color: var(--pp-bg-cream);
+  color: var(--pp-text-regular);
+}
+
+.el-pagination.is-background .el-pager li.is-active {
+  background-color: var(--pp-primary);
+  box-shadow: 0 4px 12px rgba(91, 155, 213, 0.28);
+}
+
+/* ---------------- 弹窗 / 抽屉：大圆角 · 柔和遮罩 · 淡入缩放 ---------------- */
+.el-dialog {
+  border-radius: var(--pp-radius-xl);
+  padding: 0;
+  overflow: hidden;
+  box-shadow: var(--pp-shadow-lg);
+}
+
+.el-dialog__header {
+  padding: var(--pp-space-5) var(--pp-space-6) var(--pp-space-3);
+  margin: 0;
+}
+
+.el-dialog__title {
+  font-weight: var(--pp-fw-semibold);
+  color: var(--pp-text-primary);
+  font-size: var(--pp-fs-lg);
+}
+
+.el-dialog__body {
+  padding: var(--pp-space-2) var(--pp-space-6) var(--pp-space-5);
+  color: var(--pp-text-regular);
+}
+
+.el-dialog__footer {
+  padding: var(--pp-space-3) var(--pp-space-6) var(--pp-space-5);
+}
+
+.el-overlay {
+  background-color: var(--pp-mask);
+  backdrop-filter: blur(2px);
+}
+
+.el-drawer {
+  border-radius: var(--pp-radius-xl) 0 0 var(--pp-radius-xl);
+}
+
+.el-drawer__header {
+  padding: var(--pp-space-5) var(--pp-space-5) var(--pp-space-3);
+  margin: 0;
+  color: var(--pp-text-primary);
+  font-weight: var(--pp-fw-semibold);
+}
+
+.el-drawer__body {
+  padding: 0 var(--pp-space-5) var(--pp-space-5);
+}
+
+/* 弹窗淡入缩放动效 */
+.dialog-fade-enter-active .el-dialog,
+.el-dialog.zoom-in {
+  animation: pp-dialog-in var(--pp-dur) var(--pp-ease-bounce);
+}
+
+@keyframes pp-dialog-in {
+  from {
+    opacity: 0;
+    transform: scale(0.98) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ---------------- 标签：柔和底色 + 深色文字（胶囊） ---------------- */
+.el-tag {
+  border-radius: var(--pp-radius-pill);
+  border: none;
+  font-weight: var(--pp-fw-medium);
+  padding: 0 12px;
+  height: 26px;
+  line-height: 26px;
+}
+
+.el-tag--primary {
+  background-color: var(--pp-primary-lighter);
+  color: var(--pp-primary-dark);
+}
+.el-tag--success {
+  background-color: var(--pp-success-bg);
+  color: #4e8a4d;
+}
+.el-tag--warning {
+  background-color: var(--pp-warning-bg);
+  color: #c47c2b;
+}
+.el-tag--danger,
+.el-tag--error {
+  background-color: var(--pp-danger-bg);
+  color: #c25a3f;
+}
+.el-tag--info {
+  background-color: var(--pp-info-bg);
+  color: #5b87a8;
+}
+.el-tag--pp-neutral {
+  background-color: var(--pp-neutral-bg);
+  color: #857b6e;
+}
+.el-tag--pp-ai {
+  background-color: var(--pp-ai-bg);
+  color: #7361a4;
+}
+
+/* ---------------- 消息提示 / 通知 ---------------- */
+.el-message {
+  border-radius: var(--pp-radius-pill);
+  border: 1px solid var(--pp-border-light);
+  box-shadow: var(--pp-shadow-md);
+  padding: 12px 22px;
+  min-width: 240px;
+}
+
+.el-message--success {
+  background-color: var(--pp-success-bg);
+  border-color: #d3e9d2;
+}
+.el-message--warning {
+  background-color: var(--pp-warning-bg);
+  border-color: #f6e0c7;
+}
+.el-message--error {
+  background-color: var(--pp-danger-bg);
+  border-color: #f6d6cc;
+}
+
+.el-notification {
+  border-radius: var(--pp-radius-lg);
+  border: 1px solid var(--pp-border-light);
+  box-shadow: var(--pp-shadow-lg);
+}
+
+.el-message-box {
+  border-radius: var(--pp-radius-xl);
+  padding: var(--pp-space-5);
+  box-shadow: var(--pp-shadow-lg);
+}
+
+.el-message-box__title {
+  font-weight: var(--pp-fw-semibold);
+  color: var(--pp-text-primary);
+}
+
+/* ---------------- 菜单 / 下拉 / 选择面板 ---------------- */
+.el-popper.is-light,
+.el-select-dropdown,
+.el-dropdown__popper {
+  border-radius: var(--pp-radius-md);
+  border: 1px solid var(--pp-border-light);
+  box-shadow: var(--pp-shadow-md);
+}
+
+.el-select-dropdown__item {
+  border-radius: var(--pp-radius-xs);
+  margin: 2px 6px;
+  height: 36px;
+  line-height: 36px;
+}
+
+.el-select-dropdown__item.is-selected {
+  background-color: var(--pp-primary-lighter);
+  color: var(--pp-primary-dark);
+  font-weight: var(--pp-fw-medium);
+}
+
+.el-dropdown-menu__item {
+  border-radius: var(--pp-radius-xs);
+  margin: 2px 6px;
+}
+
+/* ---------------- 表单 ---------------- */
+.el-form-item__label {
+  color: var(--pp-text-regular);
+  font-weight: var(--pp-fw-medium);
+}
+
+.el-radio-button__inner {
+  border-radius: var(--pp-radius-pill) !important;
+  border: 1px solid var(--pp-border) !important;
+  margin-right: 8px;
+  background: var(--pp-bg-card);
+  color: var(--pp-text-regular);
+  transition: all var(--pp-dur-fast) var(--pp-ease);
+}
+
+.el-radio-button__original-radio:checked + .el-radio-button__inner {
+  background: var(--pp-primary);
+  border-color: var(--pp-primary) !important;
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(91, 155, 213, 0.24) !important;
+}
+
+.el-checkbox__inner,
+.el-radio__inner {
+  border-radius: 5px;
+  border-color: var(--pp-border-strong);
+}
+
+.el-radio__inner {
+  border-radius: 50%;
+}
+
+/* ---------------- 开关 / 滑块 / 进度 ---------------- */
+.el-switch.is-checked .el-switch__core {
+  background-color: var(--pp-primary);
+  border-color: var(--pp-primary);
+}
+
+.el-switch__core {
+  border-radius: var(--pp-radius-pill);
+}
+
+.el-slider__bar {
+  background-color: var(--pp-primary);
+}
+.el-slider__button {
+  border-color: var(--pp-primary);
+}
+
+.el-progress-bar__outer,
+.el-progress-bar__inner {
+  border-radius: var(--pp-radius-pill);
+}
+
+/* ---------------- 提示 / 气泡 / 步骤条 ---------------- */
+.el-alert {
+  border-radius: var(--pp-radius-md);
+  border: none;
+  padding: 14px 18px;
+}
+
+.el-alert--warning.is-light {
+  background-color: var(--pp-warning-bg);
+  color: #a8681f;
+}
+.el-alert--error.is-light {
+  background-color: var(--pp-danger-bg);
+  color: #b8503a;
+}
+.el-alert--success.is-light {
+  background-color: var(--pp-success-bg);
+  color: #4e8a4d;
+}
+.el-alert--info.is-light {
+  background-color: var(--pp-info-bg);
+  color: #4e7d9f;
+}
+
+.el-tooltip__popper,
+.el-popper.is-dark {
+  border-radius: var(--pp-radius-sm);
+  background: #4a4741;
+  padding: 8px 12px;
+}
+
+.el-descriptions__label {
+  color: var(--pp-text-secondary);
+  font-weight: var(--pp-fw-normal);
+}
+
+.el-descriptions__body .el-descriptions__table.is-bordered .el-descriptions__cell {
+  border-color: var(--pp-border-light);
+}
+
+.el-empty__description p {
+  color: var(--pp-text-secondary);
+}
+
+.el-divider {
+  border-color: var(--pp-border-light);
+}
+
+.el-divider__text {
+  background-color: var(--pp-bg-card);
+  color: var(--pp-text-secondary);
+  font-size: var(--pp-fs-sm);
+}
+
+.el-tabs__item {
+  color: var(--pp-text-regular);
+  font-weight: var(--pp-fw-medium);
+}
+
+.el-tabs__item.is-active {
+  color: var(--pp-primary-dark);
+}
+
+.el-tabs__active-bar {
+  background-color: var(--pp-primary);
+  border-radius: var(--pp-radius-pill);
+  height: 3px;
+}
+
+.el-tabs__nav-wrap::after {
+  background-color: var(--pp-border-light);
+  height: 1px;
+}
+
+.el-badge__content {
+  border-radius: var(--pp-radius-pill);
+  border: none;
+  background-color: var(--pp-danger);
+  font-family: var(--pp-font-num);
+}
+
+.el-avatar {
+  border-radius: 50%;
+  background-color: var(--pp-primary-lighter);
+}
+
+.el-skeleton__item {
+  background: linear-gradient(90deg, #f2ece2 25%, #f8f4ee 37%, #f2ece2 63%);
+  border-radius: var(--pp-radius-sm);
+}
+
+.el-date-editor .el-range-input {
+  font-family: var(--pp-font-num);
+}
+
+.el-picker-panel {
+  border-radius: var(--pp-radius-md);
+  box-shadow: var(--pp-shadow-md);
+}
+
+.el-date-table td.current:not(.disabled) .el-date-table-cell__text {
+  background-color: var(--pp-primary);
+}
+
+.el-upload-dragger {
+  border-radius: var(--pp-radius-lg);
+  border: 1px dashed var(--pp-border-strong);
+  background-color: var(--pp-bg-sunken);
+}

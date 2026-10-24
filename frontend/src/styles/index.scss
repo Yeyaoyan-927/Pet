@@ -1,0 +1,319 @@
+/* ==========================================================================
+   基础样式与通用容器类（页面统一骨架）
+   页面五段式：面包屑 → 标题+操作 → 筛选区 → 内容区 → 分页
+   ========================================================================== */
+@use './variables.scss';
+@use './element.scss';
+@use './animation.scss';
+@use './texture.scss';
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--pp-font-family);
+  font-size: var(--pp-fs-base);
+  line-height: var(--pp-lh);
+  color: var(--pp-text-regular);
+  background-color: var(--pp-bg-page);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+  color: var(--pp-text-primary);
+  font-weight: var(--pp-fw-semibold);
+  line-height: var(--pp-lh-tight);
+}
+
+a {
+  color: var(--pp-primary-dark);
+  text-decoration: none;
+}
+
+/* 数字与英文使用 Nunito / Quicksand 字体，视觉更柔和 */
+.pp-num,
+.el-pagination,
+.el-table td .pp-num,
+.stat-value {
+  font-family: var(--pp-font-num);
+  font-feature-settings: 'tnum';
+}
+
+/* ---------------- 页面容器 ---------------- */
+.pp-page {
+  padding: var(--pp-space-5);
+  max-width: var(--pp-content-max);
+  margin: 0 auto;
+  animation: pp-page-in var(--pp-dur-slow) var(--pp-ease);
+}
+
+@keyframes pp-page-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pp-page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--pp-space-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--pp-space-5);
+}
+
+.pp-page-title {
+  font-size: var(--pp-fs-xl);
+  font-weight: var(--pp-fw-semibold);
+  color: var(--pp-text-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--pp-space-2);
+}
+
+.pp-page-desc {
+  margin-top: var(--pp-space-1);
+  font-size: var(--pp-fs-sm);
+  /* 说明文案属于正文层级，用常规文字色保证对比度 ≥ 4.5:1；
+     --pp-text-secondary 仅用于非必要的元信息标签 */
+  color: var(--pp-text-regular);
+  max-width: 780px;
+}
+
+.pp-page-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--pp-space-2);
+  flex-wrap: wrap;
+}
+
+/* ---------------- 卡片与面板 ---------------- */
+.pp-card {
+  background: var(--pp-bg-card);
+  border: 1px solid var(--pp-border-light);
+  border-radius: var(--pp-radius-lg);
+  box-shadow: var(--pp-shadow-sm);
+  padding: var(--pp-space-5);
+  transition: transform var(--pp-dur) var(--pp-ease), box-shadow var(--pp-dur) var(--pp-ease);
+}
+
+.pp-card--hover:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--pp-shadow-md);
+}
+
+.pp-card + .pp-card {
+  margin-top: var(--pp-space-4);
+}
+
+.pp-card-title {
+  display: flex;
+  align-items: center;
+  gap: var(--pp-space-2);
+  font-size: var(--pp-fs-md);
+  font-weight: var(--pp-fw-semibold);
+  color: var(--pp-text-primary);
+  margin-bottom: var(--pp-space-4);
+}
+
+.pp-card-title::before {
+  content: '';
+  width: 4px;
+  height: 16px;
+  border-radius: var(--pp-radius-pill);
+  background: linear-gradient(180deg, var(--pp-primary-light), var(--pp-primary));
+}
+
+.pp-card-extra {
+  margin-left: auto;
+  font-size: var(--pp-fs-sm);
+  font-weight: var(--pp-fw-normal);
+  color: var(--pp-text-secondary);
+}
+
+/* 筛选区 */
+.pp-filter {
+  background: var(--pp-bg-card);
+  border: 1px solid var(--pp-border-light);
+  border-radius: var(--pp-radius-lg);
+  box-shadow: var(--pp-shadow-xs);
+  padding: var(--pp-space-4) var(--pp-space-5) var(--pp-space-1);
+  margin-bottom: var(--pp-space-4);
+}
+
+.pp-filter .el-form-item {
+  margin-bottom: var(--pp-space-3);
+}
+
+/* 分页条 */
+.pp-pager {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: var(--pp-space-4);
+}
+
+/* ---------------- 指标卡 ---------------- */
+.pp-stat {
+  background: var(--pp-bg-card);
+  border: 1px solid var(--pp-border-light);
+  border-radius: var(--pp-radius-lg);
+  box-shadow: var(--pp-shadow-xs);
+  padding: var(--pp-space-4) var(--pp-space-5);
+  height: 100%;
+  transition: transform var(--pp-dur) var(--pp-ease), box-shadow var(--pp-dur) var(--pp-ease);
+}
+
+.pp-stat:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--pp-shadow-md);
+}
+
+.pp-stat-label {
+  font-size: var(--pp-fs-sm);
+  color: var(--pp-text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pp-stat-value {
+  font-family: var(--pp-font-num);
+  font-size: var(--pp-fs-2xl);
+  font-weight: var(--pp-fw-bold);
+  color: var(--pp-text-primary);
+  line-height: 1.3;
+  margin-top: var(--pp-space-1);
+}
+
+.pp-stat-suffix {
+  font-size: var(--pp-fs-sm);
+  font-weight: var(--pp-fw-medium);
+  color: var(--pp-text-secondary);
+  margin-left: 4px;
+}
+
+.pp-stat--primary .pp-stat-value {
+  color: var(--pp-primary-dark);
+}
+.pp-stat--success .pp-stat-value {
+  color: #4e8a4d;
+}
+.pp-stat--warning .pp-stat-value {
+  color: #c47c2b;
+}
+.pp-stat--danger .pp-stat-value {
+  color: #c25a3f;
+}
+.pp-stat--ai .pp-stat-value {
+  color: #7361a4;
+}
+
+/* ---------------- 网格 ---------------- */
+.pp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--pp-space-4);
+}
+
+.pp-grid--wide {
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+}
+
+/* ---------------- 文本工具 ---------------- */
+.pp-muted {
+  color: var(--pp-text-secondary);
+}
+.pp-dim {
+  color: var(--pp-text-placeholder);
+}
+.pp-strong {
+  color: var(--pp-text-primary);
+  font-weight: var(--pp-fw-semibold);
+}
+.pp-mt-4 {
+  margin-top: var(--pp-space-4);
+}
+.pp-mt-5 {
+  margin-top: var(--pp-space-5);
+}
+.pp-mb-4 {
+  margin-bottom: var(--pp-space-4);
+}
+.pp-flex {
+  display: flex;
+  align-items: center;
+}
+.pp-flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.pp-gap-2 {
+  gap: var(--pp-space-2);
+}
+.pp-gap-3 {
+  gap: var(--pp-space-3);
+}
+.pp-wrap {
+  flex-wrap: wrap;
+}
+
+/* ---------------- 表格横向滚动（1024 以下） ---------------- */
+.pp-scroll-x {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 自定义滚动条：柔和圆角 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #e6ddd0;
+  border-radius: var(--pp-radius-pill);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d8ccba;
+}
+
+/* ---------------- 无障碍 ---------------- */
+:focus-visible {
+  outline: 2px solid var(--pp-primary);
+  outline-offset: 2px;
+}
+
+.pp-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
